@@ -1,0 +1,32 @@
+#!/usr/bin/python3
+
+
+
+import sys
+
+
+# fn unpack number factorial
+def fc():
+   
+    try:
+        filekey = sys.argv[1]
+        with open(filekey) as f:
+            for item in f:
+                item = int(item)
+                if item % 2 == 0:
+                        print("{}={}*{}".format(item, item // 2, 2))
+                        continue
+                i = 3
+                while i < item // 2:
+                    if item % i == 0:
+                        print("{}={}*{}".format(item, item // i, i))
+                        break
+                    i = i + 2
+                if i == (item // 2) + 1:
+                    print("{}={}*{}".format(item, item, 1))
+    except (IndexError):
+        pass
+
+
+
+fc()
