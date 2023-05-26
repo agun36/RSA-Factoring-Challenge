@@ -21,8 +21,9 @@ def main():
         number = int(number)
         factors = factorize(number)
         for factor in factors:
-            print(f"{number}={factor[0]}*{factor[1]}")
+            print("{}={}*{}".format(number, factor[0], factor[1]))
 
 if __name__ == "__main__":
     main()
+
 
