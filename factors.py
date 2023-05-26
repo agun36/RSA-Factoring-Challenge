@@ -1,29 +1,20 @@
 #!/usr/bin/python3
 import sys
+import math
 
-def factorize(number):
-    factors = []
-    for i in range(2, int(number**0.5) + 1):
-        if number % i == 0:
-            factors.append((i, number // i))
-    return factors
-
-def main():
-    if len(sys.argv) != 2:
-        print("Usage: factors <file>")
-        return
-
-    filename = sys.argv[1]
-    with open(filename, 'r') as file:
-        numbers = file.read().splitlines()
-
-    for number in numbers:
-        number = int(number)
-        factors = factorize(number)
-        for factor in factors:
-            print("{}={}*{}".format(number, factor[0], factor[1]))
+def factors(filename):
+    with open(filename, 'r') as f:
+        for line in f:
+            n = int(line.strip())
+            for i in range(2, int(math.sqrt(n)) + 1):
+                if n % i == 0:
+                    print(f"{n}={i}*{n//i}")
+                    break
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) != 2:
+        print("Usage: factors <file>")
+        sys.exit(1)
+    factors(sys.argv[1])
 
 
